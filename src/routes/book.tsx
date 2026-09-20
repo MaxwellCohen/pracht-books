@@ -26,8 +26,8 @@ export function loader({ params, url }: LoaderArgs) {
   };
 }
 
-export function headers({ url }: HeadersArgs<typeof loader>) {
-  return catalogDocumentHeaders(getApiDelayMs(searchParamsFromUrl(url.searchParams)));
+export function headers(_args: HeadersArgs<typeof loader>) {
+  return catalogDocumentHeaders();
 }
 
 export function head() {
