@@ -3,7 +3,6 @@ import { EMPTY_IMAGE_URL, ITEMS_PER_PAGE, MIN_RATING, MIN_YEAR } from '@/feature
 import { GENERATED_PREVIEW_BOOKS } from '@/features/book/book-preview-catalog';
 import type { BookFilters, BookQuery } from '@/features/book/book-utils';
 import { SAMPLE_BOOKS } from '@/features/book/data/sample-books';
-import { withTtlCache } from '@/lib/catalog-cache';
 import { getDb } from '@/lib/db/drizzle';
 import { authors, books, bookToAuthor } from '@/lib/db/schema';
 
@@ -168,6 +167,6 @@ async function loadBookById(id: string): Promise<BookDetails | null> {
   return result[0] ?? null;
 }
 
-export const getBooksPage = withTtlCache('getBooksPage', loadBooksPage);
-export const getBooksCount = withTtlCache('getBooksCount', loadBooksCount);
-export const getBookById = withTtlCache('getBookById', loadBookById);
+export const getBooksPage = loadBooksPage;
+export const getBooksCount = loadBooksCount;
+export const getBookById = loadBookById;

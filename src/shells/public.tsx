@@ -42,7 +42,15 @@ export function Shell({ children }: ShellProps) {
 export function head() {
   return {
     lang: 'en',
-    link: [{ href: '/icon.svg', rel: 'icon', type: 'image/svg+xml' }],
+    link: [
+      { href: '/icon.svg', rel: 'icon', type: 'image/svg+xml' },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400&display=swap',
+      },
+    ],
     meta: [
       { content: 'width=device-width, initial-scale=1', name: 'viewport' },
       { content: description, name: 'description' },

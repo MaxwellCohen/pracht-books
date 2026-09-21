@@ -3,7 +3,6 @@ import {
   Suspense,
   use,
   type ErrorBoundaryProps,
-  type HeadersArgs,
   type LoaderArgs,
   type RouteComponentProps,
 } from '@pracht/core';
@@ -14,7 +13,6 @@ import { toBookFilters, toBookQuery } from '@/features/book/book-utils';
 import { BookGrid, BookGridSkeleton } from '@/features/book/components/book-grid';
 import { BookPagination, BookPaginationSkeleton } from '@/features/book/components/book-pagination';
 import { waitForApiDelay } from '@/lib/api-delay';
-import { catalogDocumentHeaders } from '@/lib/catalog-headers';
 import { getApiDelayMs, searchParamsFromUrl } from '@/lib/url-state';
 
 export function loader({ url }: LoaderArgs) {
@@ -27,10 +25,6 @@ export function loader({ url }: LoaderArgs) {
     searchParams,
     totalResults: defer(ready.then(() => getBooksCount(toBookFilters(query)))),
   };
-}
-
-export function headers({ url }: HeadersArgs<typeof loader>) {
-  return catalogDocumentHeaders(getApiDelayMs(searchParamsFromUrl(url.searchParams)));
 }
 
 export function head() {
