@@ -16,7 +16,7 @@
       "shell": "public",
       "shellFile": "./shells/public.tsx",
       "speculation": null,
-      "streaming": null
+      "streaming": true
     },
     {
       "file": "./routes/book.tsx",
@@ -27,15 +27,28 @@
       "middleware": [],
       "path": "/:id",
       "prefetch": null,
-      "render": "ssr",
-      "revalidate": null,
+      "render": "isg",
+      "revalidate": {
+        "kind": "time",
+        "seconds": 3600
+      },
       "shell": "public",
       "shellFile": "./shells/public.tsx",
       "speculation": null,
       "streaming": null
     }
   ],
-  "api": [],
+  "api": [
+    {
+      "file": "/src/api/_pracht/image.ts",
+      "hasDefaultHandler": false,
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "path": "/api/_pracht/image"
+    }
+  ],
   "capabilities": [],
   "mcpEndpoint": null,
   "mcpAuthenticated": false,

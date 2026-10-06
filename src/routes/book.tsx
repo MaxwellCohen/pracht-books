@@ -9,12 +9,28 @@ import {
 } from '@pracht/core';
 import { Button } from '@/components/ui/button';
 import { ErrorState } from '@/components/ui/error-state';
+import { GENERATED_PREVIEW_BOOKS } from '@/features/book/book-preview-catalog';
 import { getBookById } from '@/features/book/book-queries';
+import { SAMPLE_BOOKS } from '@/features/book/data/sample-books';
+import { getDb } from '@/lib/db/drizzle';
+import { books } from '@/lib/db/schema';
 import { BackToBooksLink } from '@/features/book/components/back-to-books-link';
 import { BookDetail, BookDetailSkeleton } from '@/features/book/components/book-detail';
 import { waitForApiDelay } from '@/lib/api-delay';
 import { catalogDocumentHeaders } from '@/lib/catalog-headers';
 import { getApiDelayMs, searchParamsFromUrl } from '@/lib/url-state';
+
+const ISR_PATH_LIMIT = 100;
+
+export async function getStaticPaths() {
+  const database = getDb();
+  if (database) {
+    const rows = await database.select({ id: books.id }).from(books).orderBy(books.id).limit(ISR_PATH_LIMIT);
+    if (rows.length > 0) return rows.map(row => ({ id: String(row.id) }));
+  }
+
+  return [...SAMPLE_BOOKS, ...GENERATED_PREVIEW_BOOKS].map(book => ({ id: String(book.id) }));
+}
 
 export function loader({ params, url }: LoaderArgs) {
   const searchParams = searchParamsFromUrl(url.searchParams);

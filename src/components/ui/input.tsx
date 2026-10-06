@@ -22,10 +22,12 @@ const variants: Record<Variant, string> = {
 export function Input({ className, inputRef, type, variant = 'default', ...props }: Props) {
   return (
     <input
-      className={cn(variants[type === 'hidden' ? 'unstyled' : variant], className)}
-      ref={inputRef}
-      type={type}
-      {...props}
+      {...({
+        ...props,
+        className: cn(variants[type === 'hidden' ? 'unstyled' : variant], className),
+        ref: inputRef,
+        type,
+      } as JSX.IntrinsicElements['input'])}
     />
   );
 }

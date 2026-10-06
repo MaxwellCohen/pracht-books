@@ -1,8 +1,10 @@
+import { Image } from '@pracht/image';
 import { useState } from 'preact/hooks';
 import { EMPTY_IMAGE_URL, getLargeBookImageUrl } from '@/features/book/book-constants';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { thumbHashToDataURL } from 'thumbhash';
+import '@/lib/images';
 
 type Props = {
   className?: string;
@@ -42,23 +44,16 @@ export function BookCover({ className, priority, sizes, src, thumbhash, title }:
           Cover unavailable
         </div>
       ) : (
-        <img
+        <Image
           alt={title}
-          className="absolute inset-0 size-full object-cover"
-          decoding="async"
-          fetchPriority={priority ? 'high' : 'auto'}
-          loading={priority ? 'eager' : 'lazy'}
+          blurDataURL={placeholder}
+          className="size-full object-cover"
+          fill
           onError={() => setFailedSrc(resolved)}
+          placeholder={placeholder ? 'blur' : 'empty'}
+          priority={priority}
           sizes={sizes}
           src={resolved}
-          style={
-            placeholder
-              ? {
-                  backgroundImage: `url("${placeholder}")`,
-                  backgroundSize: 'cover',
-                }
-              : undefined
-          }
         />
       )}
     </div>

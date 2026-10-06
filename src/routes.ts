@@ -1,4 +1,4 @@
-import { defineApp, route } from '@pracht/core';
+import { defineApp, route, timeRevalidate } from '@pracht/core';
 
 export const app = defineApp({
   notFound: {
@@ -8,15 +8,15 @@ export const app = defineApp({
   routes: [
     route('/', './routes/home.tsx', {
       id: 'home',
-      render: 'ssr',
+      render: 'isg',
       shell: 'public',
-      streaming: true,
+      revalidate: timeRevalidate(3600),
     }),
     route('/:id', './routes/book.tsx', {
       id: 'book',
-      render: 'ssr',
+      render: 'isg',
+      revalidate: timeRevalidate(3600),
       shell: 'public',
-      streaming: true,
     }),
   ],
   shells: {

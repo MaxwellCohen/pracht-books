@@ -1,8 +1,8 @@
-import { neon } from '@neondatabase/serverless';
+import { neon, type NeonQueryFunction } from '@neondatabase/serverless';
 import { serverEnv } from '@pracht/core/env/server';
 import { drizzle } from 'drizzle-orm/neon-http';
 
-type Sql = ReturnType<typeof neon>;
+type Sql = NeonQueryFunction<false, false>;
 type Database = ReturnType<typeof drizzle>;
 
 let sql: Sql | null = null;
