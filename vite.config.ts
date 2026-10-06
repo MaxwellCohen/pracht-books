@@ -25,7 +25,7 @@ const imageHandler = fileURLToPath(
 );
 
 export default defineConfig({
-  plugins: [prachtImage(), pracht({ adapter, llmsTxt: {} }), tailwindcss()],
+  plugins: [prachtImage(), pracht({ adapter, inlineCss: true, llmsTxt: {} }), tailwindcss()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
