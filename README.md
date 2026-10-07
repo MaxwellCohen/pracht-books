@@ -23,9 +23,9 @@ Leave `POSTGRES_URL` empty to browse the generated preview catalog. Point it at 
 
 Production:
 
-- Vercel: [pract-books.vercel.app](https://pract-books.vercel.app)
-- Netlify: [pract-books.netlify.app](https://pract-books.netlify.app)
-- Cloudflare: [pract-books.to-email-max.workers.dev](https://pract-books.to-email-max.workers.dev)
+- Vercel: [pracht-books.vercel.app](https://pracht-books.vercel.app)
+- Netlify: [pracht-books.netlify.app](https://pracht-books.netlify.app)
+- Cloudflare: [pracht-books.to-email-max.workers.dev](https://pracht-books.to-email-max.workers.dev)
 
 Vercel is the default adapter. Set `NETLIFY=1` for Netlify, or `CLOUDFLARE=1` for Cloudflare Workers:
 
