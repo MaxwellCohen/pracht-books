@@ -1,14 +1,5 @@
 import { publicEnv } from '@pracht/core';
-import { configureImage, defaultLoader, vercelLoader, type ImageLoader, type ImageLoaderArgs } from '@pracht/image';
-
-function netlifyLoader({ quality = 75, src, width }: ImageLoaderArgs) {
-  const params = new URLSearchParams({
-    q: String(quality),
-    url: src,
-    w: String(width),
-  });
-  return `/.netlify/images?${params.toString()}`;
-}
+import { configureImage, defaultLoader, netlifyLoader, vercelLoader, type ImageLoader } from '@pracht/image';
 
 const loaders = {
   cloudflare: defaultLoader,

@@ -11,12 +11,15 @@
       "middleware": [],
       "path": "/",
       "prefetch": null,
-      "render": "ssr",
-      "revalidate": null,
+      "render": "isg",
+      "revalidate": {
+        "kind": "time",
+        "seconds": 3600
+      },
       "shell": "public",
       "shellFile": "./shells/public.tsx",
       "speculation": null,
-      "streaming": true
+      "streaming": null
     },
     {
       "file": "./routes/book.tsx",

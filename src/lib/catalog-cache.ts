@@ -41,7 +41,7 @@ function edgeRequest(key: string) {
 }
 
 function edgeCache(): Cache | undefined {
-  const cachesApi = (globalThis as typeof globalThis & { caches?: CacheStorage }).caches;
+  const cachesApi = (globalThis as typeof globalThis & { caches?: CacheStorage & { default?: Cache } }).caches;
   return cachesApi?.default;
 }
 
