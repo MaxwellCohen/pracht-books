@@ -4,6 +4,66 @@ import type { HrefRouteDefinition } from "@pracht/core";
 
 export const routes = [
   {
+    id: "ft-index",
+    path: "/feature-tests",
+  },
+  {
+    id: "ft-css-inlining",
+    path: "/feature-tests/css-inlining",
+  },
+  {
+    id: "ft-font-optimization",
+    path: "/feature-tests/font-optimization",
+  },
+  {
+    id: "ft-image-pipeline",
+    path: "/feature-tests/image-pipeline",
+  },
+  {
+    id: "ft-caching",
+    path: "/feature-tests/caching",
+  },
+  {
+    id: "ft-route-prefetching",
+    path: "/feature-tests/route-prefetching",
+  },
+  {
+    id: "ft-prefetch-intent-target",
+    path: "/feature-tests/route-prefetching/intent-target",
+  },
+  {
+    id: "ft-prefetch-viewport-target",
+    path: "/feature-tests/route-prefetching/viewport-target",
+  },
+  {
+    id: "ft-islands",
+    path: "/feature-tests/islands",
+  },
+  {
+    id: "ft-render-modes",
+    path: "/feature-tests/render-modes",
+  },
+  {
+    id: "ft-render-modes-ssr",
+    path: "/feature-tests/render-modes/ssr",
+  },
+  {
+    id: "ft-reactivity",
+    path: "/feature-tests/reactivity",
+  },
+  {
+    id: "ft-bundle-analysis",
+    path: "/feature-tests/bundle-analysis",
+  },
+  {
+    id: "ft-third-party-scripts",
+    path: "/feature-tests/third-party-scripts",
+  },
+  {
+    id: "ft-multi-host-deployment",
+    path: "/feature-tests/multi-host-deployment",
+  },
+  {
     id: "home",
     path: "/",
   },
