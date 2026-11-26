@@ -5,6 +5,96 @@ import type { ApiRouteMethodMap, RouteLoaderData, RouteParamInput, RouteSearchIn
 declare module "@pracht/core" {
   interface Register {
     routes: {
+      "ft-index": {
+        path: "/feature-tests";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/index")>;
+      };
+      "ft-css-inlining": {
+        path: "/feature-tests/css-inlining";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/css-inlining")>;
+      };
+      "ft-font-optimization": {
+        path: "/feature-tests/font-optimization";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/font-optimization")>;
+      };
+      "ft-image-pipeline": {
+        path: "/feature-tests/image-pipeline";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/image-pipeline")>;
+      };
+      "ft-caching": {
+        path: "/feature-tests/caching";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/caching")>;
+      };
+      "ft-route-prefetching": {
+        path: "/feature-tests/route-prefetching";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/route-prefetching")>;
+      };
+      "ft-prefetch-intent-target": {
+        path: "/feature-tests/route-prefetching/intent-target";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/prefetch-target")>;
+      };
+      "ft-prefetch-viewport-target": {
+        path: "/feature-tests/route-prefetching/viewport-target";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/prefetch-target")>;
+      };
+      "ft-islands": {
+        path: "/feature-tests/islands";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/islands")>;
+      };
+      "ft-render-modes": {
+        path: "/feature-tests/render-modes";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/render-mode")>;
+      };
+      "ft-render-modes-ssr": {
+        path: "/feature-tests/render-modes/ssr";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/render-mode")>;
+      };
+      "ft-reactivity": {
+        path: "/feature-tests/reactivity";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/reactivity")>;
+      };
+      "ft-bundle-analysis": {
+        path: "/feature-tests/bundle-analysis";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/bundle-analysis")>;
+      };
+      "ft-third-party-scripts": {
+        path: "/feature-tests/third-party-scripts";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/third-party-scripts")>;
+      };
+      "ft-multi-host-deployment": {
+        path: "/feature-tests/multi-host-deployment";
+        params: Record<never, never>;
+        search: SearchParamsInput;
+        data: RouteLoaderData<typeof import("./routes/feature-tests/multi-host-deployment")>;
+      };
       "home": {
         path: "/";
         params: Record<never, never>;

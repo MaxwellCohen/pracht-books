@@ -12,3 +12,4 @@ netlify/functions
 /test-results/
 *_import_checkpoint.json
 # Keep .pracht/app-graph.json committed — it is the `pracht plan` snapshot.
+/feature-tests/out/

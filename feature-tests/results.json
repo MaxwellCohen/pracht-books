@@ -1,0 +1,85 @@
+{
+  "framework": "pracht",
+  "repo": "pracht-books",
+  "commit": "5272c72cb831f6acfb212859d69cf0392ad0d850",
+  "ranAt": "2026-11-26T05:34:15.742Z",
+  "results": {
+    "css-inlining": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "pracht({ inlineCss: true }) in vite.config.ts; route imports css-inlining.css",
+      "evidence": "<style data-pracht-inline-css> holds route (.ft-css-inlining-marker) + shell CSS; 0 <link rel=stylesheet> in HTML; JS-disabled load styled with 0 CSS requests; with JS the client runtime later fetches 2 .css file(s) (for client navigation), not parser/render-blocking",
+      "test": "feature-tests/css-inlining.spec.ts"
+    },
+    "font-optimization": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "defineFont() from @pracht/core (self-hosted woff2 in public/fonts) registered via head().fonts",
+      "evidence": "preload <link as=font crossorigin> + @font-face font-display:swap + size-adjusted local() fallback face emitted; woff2 served from same origin (200); 0 Google Fonts requests",
+      "test": "feature-tests/font-optimization.spec.ts"
+    },
+    "image-pipeline": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "<Image> from @pracht/image + prachtImage() `?pracht` import; node build uses defaultLoader → sharp endpoint (createImageHandler)",
+      "evidence": "srcset widths [640,750,828,1080,1200,1920,2048,3840], width/height=1600x1000, offscreen loading=lazy, hero eager+fetchpriority=high; /api/_pracht/image?url=%2Fassets%2Fsample-BlFURgB4.jpg… returns {\"image/avif\":\"image/webp\",\"image/webp\":\"image/webp\"}; hero decoded at 768px",
+      "test": "feature-tests/image-pipeline.spec.ts"
+    },
+    "caching": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "route render: \"isg\" with revalidate: timeRevalidate(5); loader returns Date.now()",
+      "evidence": "warm=1795671240722(fresh); within TTL two requests both 1795671240722 (fresh/fresh); after 6s served stale 1795671240722 (stale) then regenerated 1795671249759 (fresh)",
+      "test": "feature-tests/caching.spec.ts"
+    },
+    "route-prefetching": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "<Link prefetch=\"intent\"> and <Link prefetch=\"viewport\"> from @pracht/core",
+      "evidence": "hover → fetch /feature-tests/route-prefetching/intent-target; scroll-into-view → fetch /feature-tests/route-prefetching/viewport-target; both before click; 0 extra target request(s) on click",
+      "test": "feature-tests/route-prefetching.spec.ts"
+    },
+    "islands": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "route hydration: \"islands\" + island component in src/islands/ft-counter.tsx",
+      "evidence": "island counter increments after hydration; 4 JS files loaded (preload-helper-DjzSQ1t3.js, ft-counter-CNvM_O9U.js, vendor-CTOif8ci.js, islands-client-Ch7ix-hX.js), none contain the static marker; no full-page router state (build still emits 2 unreferenced chunk(s) with the marker for the SPA route table: islands-BelZWacs.js, islands-static-4TpQ4wRy.js)",
+      "test": "feature-tests/islands.spec.ts"
+    },
+    "render-modes": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "same module mounted with render: \"ssg\" and render: \"ssr\" in src/routes.ts",
+      "evidence": "ssg: dist/client/feature-tests/render-modes/index.html exists, served 1795671240722=1795671240722=build value; ssr: no HTML in build, timestamps 1795671254103 → 1795671254167",
+      "test": "feature-tests/render-modes.spec.ts"
+    },
+    "reactivity": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "@preact/signals useSignal() bound directly in JSX text",
+      "evidence": "count text went 0 → 3 via signal; component render counter stayed at 1",
+      "test": "feature-tests/reactivity.spec.ts"
+    },
+    "bundle-analysis": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "pracht build --analyze [--json]",
+      "evidence": "--analyze --json wrote feature-tests/out/bundle-report.json (6357 bytes, top-level keys: shared,routes); --analyze table saved to bundle-report.txt",
+      "test": "feature-tests/bundle-analysis.spec.ts"
+    },
+    "third-party-scripts": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "<Script strategy=\"idle\" src=\"/ft/third-party.js\"> from @pracht/core",
+      "evidence": "script absent from SSR HTML; injected by <Script> (#ft-third-party) 95ms after navigation start (DOMContentLoaded at 43ms); ran with document.readyState=complete",
+      "test": "feature-tests/third-party-scripts.spec.ts"
+    },
+    "multi-host-deployment": {
+      "claimedLabel": "first-party",
+      "status": "pass",
+      "method": "@pracht/adapter-{vercel,netlify,cloudflare,node} selected by env in vite.config.ts",
+      "evidence": "vercel: .vercel/output (config.json, static/, 50 .func); netlify: netlify/functions/pracht.mjs + dist/client (_headers, SSG HTML); cloudflare: dist/server/worker.js; node: dist/server/server.js (buildTarget=node)",
+      "test": "feature-tests/multi-host-deployment.spec.ts"
+    }
+  }
+}
