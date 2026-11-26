@@ -16,7 +16,7 @@
       "shell": "public",
       "shellFile": "./shells/public.tsx",
       "speculation": null,
-      "streaming": null
+      "streaming": true
     },
     {
       "file": "./routes/book.tsx",
@@ -32,7 +32,7 @@
       "shell": "public",
       "shellFile": "./shells/public.tsx",
       "speculation": null,
-      "streaming": null
+      "streaming": true
     }
   ],
   "api": [],
