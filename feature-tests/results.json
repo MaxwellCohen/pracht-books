@@ -1,8 +1,8 @@
 {
   "framework": "pracht",
   "repo": "pracht-books",
-  "commit": "533dfb3031452249529c711173c9b0dd56097b8f",
-  "ranAt": "2026-11-26T04:58:03.605Z",
+  "commit": "5272c72cb831f6acfb212859d69cf0392ad0d850",
+  "ranAt": "2026-11-26T05:34:15.742Z",
   "results": {
     "css-inlining": {
       "claimedLabel": "first-party",
@@ -29,7 +29,7 @@
       "claimedLabel": "first-party",
       "status": "pass",
       "method": "route render: \"isg\" with revalidate: timeRevalidate(5); loader returns Date.now()",
-      "evidence": "warm=1795669047063(stale); within TTL two requests both 1795669059137 (fresh/fresh); after 6s served stale 1795669059137 (stale) then regenerated 1795669066344 (fresh)",
+      "evidence": "warm=1795671240722(fresh); within TTL two requests both 1795671240722 (fresh/fresh); after 6s served stale 1795671240722 (stale) then regenerated 1795671249759 (fresh)",
       "test": "feature-tests/caching.spec.ts"
     },
     "route-prefetching": {
@@ -43,14 +43,14 @@
       "claimedLabel": "first-party",
       "status": "pass",
       "method": "route hydration: \"islands\" + island component in src/islands/ft-counter.tsx",
-      "evidence": "island counter increments after hydration; 4 JS files loaded (preload-helper-DjzSQ1t3.js, vendor-CTOif8ci.js, ft-counter-CNvM_O9U.js, islands-client-BVCoPyZA.js), none contain the static marker; no full-page router state (build still emits 2 unreferenced chunk(s) with the marker for the SPA route table: islands-BelZWacs.js, islands-static-4TpQ4wRy.js)",
+      "evidence": "island counter increments after hydration; 4 JS files loaded (preload-helper-DjzSQ1t3.js, ft-counter-CNvM_O9U.js, vendor-CTOif8ci.js, islands-client-Ch7ix-hX.js), none contain the static marker; no full-page router state (build still emits 2 unreferenced chunk(s) with the marker for the SPA route table: islands-BelZWacs.js, islands-static-4TpQ4wRy.js)",
       "test": "feature-tests/islands.spec.ts"
     },
     "render-modes": {
       "claimedLabel": "first-party",
       "status": "pass",
       "method": "same module mounted with render: \"ssg\" and render: \"ssr\" in src/routes.ts",
-      "evidence": "ssg: dist/client/feature-tests/render-modes/index.html exists, served 1795669047065=1795669047065=build value; ssr: no HTML in build, timestamps 1795669079712 → 1795669079799",
+      "evidence": "ssg: dist/client/feature-tests/render-modes/index.html exists, served 1795671240722=1795671240722=build value; ssr: no HTML in build, timestamps 1795671254103 → 1795671254167",
       "test": "feature-tests/render-modes.spec.ts"
     },
     "reactivity": {
@@ -64,14 +64,14 @@
       "claimedLabel": "first-party",
       "status": "pass",
       "method": "pracht build --analyze [--json]",
-      "evidence": "--analyze --json wrote feature-tests/out/bundle-report.json (6354 bytes, top-level keys: shared,routes); --analyze table saved to bundle-report.txt",
+      "evidence": "--analyze --json wrote feature-tests/out/bundle-report.json (6357 bytes, top-level keys: shared,routes); --analyze table saved to bundle-report.txt",
       "test": "feature-tests/bundle-analysis.spec.ts"
     },
     "third-party-scripts": {
       "claimedLabel": "first-party",
       "status": "pass",
       "method": "<Script strategy=\"idle\" src=\"/ft/third-party.js\"> from @pracht/core",
-      "evidence": "script absent from SSR HTML; injected by <Script> (#ft-third-party) 229ms after navigation start (DOMContentLoaded at 130ms); ran with document.readyState=complete",
+      "evidence": "script absent from SSR HTML; injected by <Script> (#ft-third-party) 95ms after navigation start (DOMContentLoaded at 43ms); ran with document.readyState=complete",
       "test": "feature-tests/third-party-scripts.spec.ts"
     },
     "multi-host-deployment": {
