@@ -41,14 +41,20 @@ export const app = defineApp({
       'ft-multi-host-deployment',
       { hydration: 'none' },
     ),
+    // The catalog reads ?search/?year/... in its loader, and ISG pages are built
+    // without a query (every URL would get the unfiltered page), so it is SSR with
+    // streaming; headers() lets the Vercel/Netlify CDN cache each URL for an hour.
     route('/', './routes/home.tsx', {
       id: 'home',
-      render: 'isg',
+      loaderCache: 60,
+      render: 'ssr',
       shell: 'public',
-      revalidate: timeRevalidate(3600),
+      streaming: true,
     }),
+    // Book pages don't depend on the query: ISG, cached by the adapter's platform cache.
     route('/:id', './routes/book.tsx', {
       id: 'book',
+      loaderCache: 60,
       render: 'isg',
       revalidate: timeRevalidate(3600),
       shell: 'public',

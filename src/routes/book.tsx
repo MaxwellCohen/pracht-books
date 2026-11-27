@@ -3,7 +3,6 @@ import {
   Suspense,
   use,
   type ErrorBoundaryProps,
-  type HeadersArgs,
   type LoaderArgs,
   type RouteComponentProps,
 } from '@pracht/core';
@@ -17,7 +16,6 @@ import { books } from '@/lib/db/schema';
 import { BackToBooksLink } from '@/features/book/components/back-to-books-link';
 import { BookDetail, BookDetailSkeleton } from '@/features/book/components/book-detail';
 import { waitForApiDelay } from '@/lib/api-delay';
-import { catalogDocumentHeaders } from '@/lib/catalog-headers';
 import { getApiDelayMs, searchParamsFromUrl } from '@/lib/url-state';
 
 const ISR_PATH_LIMIT = 100;
@@ -40,10 +38,6 @@ export function loader({ params, url }: LoaderArgs) {
     book: defer(ready.then(() => getBookById(params.id ?? ''))),
     searchParams,
   };
-}
-
-export function headers(_args: HeadersArgs<typeof loader>) {
-  return catalogDocumentHeaders();
 }
 
 export function head() {

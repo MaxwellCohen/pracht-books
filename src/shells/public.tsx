@@ -3,6 +3,7 @@ import { MobileBookSidebar, MobileBookSidebarTrigger } from '@/components/mobile
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { BookSearch } from '@/features/book/components/book-search';
 import { BookSidebar } from '@/features/book/components/book-sidebar';
+import { appFonts, fontVariables } from '@/fonts';
 import '../styles/global.css';
 
 const description =
@@ -14,7 +15,7 @@ export function Shell({ children }: ShellProps) {
   return (
     <ThemeProvider>
       <MobileBookSidebar sidebar={<BookSidebar idPrefix="mobile" mobile />}>
-        <div className="group flex min-h-dvh">
+        <div className="group flex min-h-dvh" style={fontVariables}>
           <aside
             className="border-divider bg-surface dark:border-divider-dark dark:bg-surface-dark sticky top-0 hidden h-dvh w-72 shrink-0 flex-col border-r px-5 py-5 md:flex"
             style={{ viewTransitionName: 'sidebar' }}
@@ -41,6 +42,7 @@ export function Shell({ children }: ShellProps) {
 
 export function head() {
   return {
+    fonts: appFonts,
     lang: 'en',
     link: [{ href: '/icon.svg', rel: 'icon', type: 'image/svg+xml' }],
     meta: [

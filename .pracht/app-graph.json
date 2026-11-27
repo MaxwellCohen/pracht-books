@@ -6,26 +6,23 @@
       "file": "./routes/home.tsx",
       "hydration": null,
       "id": "home",
-      "loaderCache": null,
+      "loaderCache": 60,
       "loaderFile": null,
       "middleware": [],
       "path": "/",
       "prefetch": null,
-      "render": "isg",
-      "revalidate": {
-        "kind": "time",
-        "seconds": 3600
-      },
+      "render": "ssr",
+      "revalidate": null,
       "shell": "public",
       "shellFile": "./shells/public.tsx",
       "speculation": null,
-      "streaming": null
+      "streaming": true
     },
     {
       "file": "./routes/book.tsx",
       "hydration": null,
       "id": "book",
-      "loaderCache": null,
+      "loaderCache": 60,
       "loaderFile": null,
       "middleware": [],
       "path": "/:id",
