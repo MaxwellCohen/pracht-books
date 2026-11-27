@@ -2,11 +2,6 @@
 export const CATALOG_CACHE_REVALIDATE_SECONDS = 3600;
 export const CATALOG_CACHE_EXPIRE_SECONDS = 86400;
 
-/** Match next-books HTML Cache-Control per host (Vercel vs Netlify/Cloudflare/local). */
-export const VERCEL_DOCUMENT_CACHE_CONTROL = 'public, max-age=0, must-revalidate';
-export const PRIVATE_DOCUMENT_CACHE_CONTROL =
-  'private, no-cache, no-store, max-age=0, must-revalidate';
-
 const TTL_MS = CATALOG_CACHE_REVALIDATE_SECONDS * 1000;
 
 type Entry<T> = { expiresAt: number; value: T };
@@ -20,11 +15,6 @@ function isVercel() {
 
 function isNetlify() {
   return typeof process !== 'undefined' && Boolean(process.env.NETLIFY) && !process.env.CLOUDFLARE;
-}
-
-/** Public document Cache-Control matching next-books on this host. */
-export function hostDocumentCacheControl(): string {
-  return isVercel() ? VERCEL_DOCUMENT_CACHE_CONTROL : PRIVATE_DOCUMENT_CACHE_CONTROL;
 }
 
 function memoryGet<T>(key: string): T | undefined {
